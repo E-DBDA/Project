@@ -33,11 +33,11 @@ train_data_dir="output/train"
 test_data_dir="output/test"
 valid_data_dir="output/val"
 
-train_datagen = ImageDataGenerator(preprocessing_function=preprocess_input,shear_range=0.2,zoom_range=0.2,horizontal_flip=True,validation_split=0.4)
+train_datagen = ImageDataGenerator(preprocessing_function=preprocess_input,shear_range=0.2,zoom_range=0.2,horizontal_flip=True)
 
-train_generator = train_datagen.flow_from_directory(train_data_dir,target_size=(img_height,img_width),batch_size=32,class_mode='categorical',subset='training')
-valid_generator = train_datagen.flow_from_directory(valid_data_dir,target_size=(img_height,img_width),batch_size=32,class_mode='categorical',subset='validation')
-test_generator = train_datagen.flow_from_directory(test_data_dir,target_size=(img_height,img_width),batch_size=1,class_mode='categorical',subset='validation')
+train_generator = train_datagen.flow_from_directory(train_data_dir,target_size=(img_height,img_width),batch_size=32,class_mode='categorical')
+valid_generator = train_datagen.flow_from_directory(valid_data_dir,target_size=(img_height,img_width),batch_size=32,class_mode='categorical')
+test_generator = train_datagen.flow_from_directory(test_data_dir,target_size=(img_height,img_width),batch_size=1,class_mode='categorical')
 
 #x,y = test_generator.next()
 #print(x.shape)
