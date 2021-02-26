@@ -80,3 +80,21 @@ sns.heatmap(conf_matrix,cmap='Blues',annot=True,fmt='d')
 plt.show()
 
 print("Test accuracy : {}".format((np.diagonal(conf_matrix).sum()/conf_matrix.sum().sum()*100)))
+import numpy as np
+from keras.preprocessing import image
+test_image = image.load_img('output/test/Ficus Auriculata (Roxburgh fig)/FA-S-006.jpg', target_size = (224, 224))
+test_image = image.img_to_array(test_image)
+test_image = np.expand_dims(test_image, axis = 0)
+ 
+# Predicting the final class
+result = model.predict(test_image)[0].argmax()
+ 
+# Fetching the class labels
+labels = train_generator.class_indices
+labels = list(labels.items())
+ 
+# Printing the final label
+for label, i in labels:
+    if i == result:
+        print("The test image has: ", label)
+        break
