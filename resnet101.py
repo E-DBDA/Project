@@ -10,6 +10,8 @@ Created on Thu Feb 25 21:52:48 2021
 Created on Tue Feb 23 10:33:02 2021
 
 @author: Vishakha
+the model is giving  93% accuracy
+ 
 """
 
 """import splitfolders
